@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row" *ngFor="let sensor of Sensors" #card>
+    <div class="col-6 mt-2 mx-auto" >
+      <div class="card" [class.border-success]="sensor.status" [class.border-danger]="!sensor.status">
+        <div class="card-body">
+          <div class="card-title">ID: {{sensor.id}}</div>
+          <div class="card-text">Имя: {{sensor.name}}</div>
+          <button class="btn btn-primary mt-2" (click)="delete(card, sensor.id)">Удалить</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6 mt-2 mx-auto">
+      <form>
+        <label>ID: <input type="number" class="form-control" placeholder="ID" [(ngModel)]="newId" name="id"></label><br>
+        <label>Имя: <input type="text" class="form-control" placeholder="Имя" [(ngModel)]="newName" name="name"></label><br>
+        <label>Онлайн: <input type="checkbox" [(ngModel)]="newStatus" name="status"></label><br>
+        <input type="submit" class="btn btn-primary" (click)="newSensor()" value="Добавить">
+      </form>
+    </div>
+  </div>
+</div>
