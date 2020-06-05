@@ -3,6 +3,7 @@
     <div class="col-12">
       <form [formGroup]="workerForm" (ngSubmit)="onWorkerFormSubmit()">
         <input type="hidden" id="id" formControlName="id" [value]="workers.length">
+        <input type="hidden" id="id" formControlName="id" [(ngModel)]="id">
         <div class="form-group">
           <label for="lastname">Фамилия</label>
           <input type="text" formControlName="lastname" id="lastname" class="form-control" placeholder="Обязательно">
@@ -17,7 +18,8 @@
         </div>
         <div class="form-group">
           <label for="number">Номер телефона</label>
-          <input type="text" formControlName="number" id="number" class="form-control" [textMask]="{mask: mask}" placeholder="Обязательно">
+          <input type="text" formControlName="number" id="number" class="form-control" [textMask]="{mask: mask}"
+            placeholder="Обязательно">
         </div>
         <div class="form-group">
           <label for="email">Email</label>
@@ -25,7 +27,8 @@
         </div>
         <div class="form-group">
           <label for="DOB">Дата рождения</label>
-          <input type="date" formControlName="DOB" id="DOB" class="form-control" placeholder="Обязательно" max="{{maxDate | date:'yyyy-MM-dd'}}" required>
+          <input type="date" formControlName="DOB" id="DOB" class="form-control" placeholder="Обязательно"
+            max="{{maxDate | date:'yyyy-MM-dd'}}" required>
         </div>
         <div class="form-group">
           <label for="department">Отдел</label>
@@ -36,9 +39,21 @@
             <option value="Юридический отдел">Юридический отдел</option>
           </select>
         </div>
-        <div class="form-group">
-          <input type="submit" class="btn btn-success form-control" [disabled]="!workerForm.valid" value="Добавить сотрудника">
+        <div class="form-group" *ngIf="href === '/add'; else elseBlock">
+          <input type="submit" class="btn btn-success form-control" [disabled]="!workerForm.valid"
+            value="Добавить сотрудника">
         </div>
+        <ng-template #elseBlock>
+          <div class="row form-group">
+            <div class="col">
+              <input type="submit" class="btn btn-primary form-control" [disabled]="!workerForm.valid"
+                value="Редактировать">
+            </div>
+            <div class="col">
+              <button class="btn btn-danger form-control" (click)="deleteWorker(id)">Удалить</button>
+            </div>
+          </div>
+        </ng-template>
       </form>
     </div>
   </div>
