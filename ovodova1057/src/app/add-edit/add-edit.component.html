@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <form [formGroup]="productForm" (ngSubmit)="onProductFormSubmit()">
+        <input type="hidden" id="id" formControlName="id" [value]="products.length">
+        <input type="hidden" id="id" formControlName="id" [(ngModel)]="id">
+        <div class="form-group">
+          <label for="name">Название</label>
+          <input type="text" formControlName="name" id="name" class="form-control" placeholder="Обязательно">
+        </div>
+        <div class="form-group">
+          <label for="code">Артикул</label>
+          <input type="text" formControlName="code" id="code" class="form-control" placeholder="Обязательно">
+        </div>
+        <div class="form-group">
+          <label for="price">Цена</label>
+          <input type="number" formControlName="price" id="price" class="form-control" placeholder="Обязательно">
+        </div>
+        <div class="form-group">
+          <label for="owner">Производитель</label>
+          <input type="text" formControlName="owner" id="owner" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="weight">Вес</label>
+          <input type="number" formControlName="weight" id="weight" class="form-control" placeholder="Обязательно">
+        </div>
+        <div class="form-group">
+          <label for="amount">Количество</label>
+          <input type="number" formControlName="amount" id="amount" class="form-control" placeholder="Обязательно">
+        </div>
+        <div class="form-group">
+          <label for="category">Категория</label>
+          <select formControlName="category" id="category" class="form-control">
+            <option value="Мебель">Мебель</option>
+            <option value="Техника">Техника</option>
+            <option value="Книги">Книги</option>
+            <option value="Телефоны">Телефоны</option>
+          </select>
+        </div>
+        <div class="form-group" *ngIf="href === '/productsAdd'; else elseBlock">
+          <input type="submit" class="btn btn-success form-control" [disabled]="!productForm.valid"
+            value="Добавить товар">
+        </div>
+        <ng-template #elseBlock>
+          <div class="row form-group">
+            <div class="col">
+              <input type="submit" class="btn btn-primary form-control" [disabled]="!productForm.valid"
+                value="Редактировать">
+            </div>
+            <div class="col">
+              <button type="button" class="btn btn-danger form-control" (click)="deleteProduct(id)">Удалить</button>
+            </div>
+          </div>
+        </ng-template>
+      </form>
+    </div>
+  </div>
+</div>

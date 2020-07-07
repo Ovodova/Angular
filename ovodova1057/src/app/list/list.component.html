@@ -1,0 +1,68 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 mt-2 col-sm-8 mx-auto">
+      <button class="btn btn-outline-info w-100" (click)="sortByPrice(products, 1)">Сортировать по убыванию
+        цены</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 mt-2 col-sm-8 mx-auto">
+      <button class="btn btn-outline-info w-100" (click)="sortByPrice(products, 2)">Сортировать по возрастанию
+        цены</button>
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 mt-2 col-sm-8 mx-auto">
+      <button class="btn btn-outline-info w-100" (click)="sortByAmount(products, 1)">Сортировать по убыванию количества
+        на складе</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 mt-2 col-sm-8 mx-auto">
+      <button class="btn btn-outline-info w-100" (click)="sortByAmount(products, 2)">Сортировать по возрастанию
+        количества на складе</button>
+    </div>
+  </div>
+  <div class="row mt-2">
+    <div class="col-12 col-sm-8 mx-auto">
+      <div class="form-group">
+        <label for="search">Категория</label>
+        <select id="search" class="form-control" [(ngModel)]="search">
+          <option value="">-</option>
+          <option value="Мебель">Мебель</option>
+          <option value="Техника">Техника</option>
+          <option value="Книги">Книги</option>
+          <option value="Телефоны">Телефоны</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="row my-2">
+    <div class="col-12 col-sm-8 mx-auto">
+        <button class="btn btn-outline-success form-control" [ngClass]="{active: status}" (click)="filterByAmount(products, status)">В наличии</button>
+    </div>
+  </div>
+  <div class="row mt-2" *ngFor="let product of products | search:search">
+    <div class="col-12 col-sm-8 mx-auto">
+      <div class="card">
+        <h5 class="card-header">{{product.name}}</h5>
+        <div class="card-body">
+          <h6 class="card-subtitle mt-2 mb-2">Категория: {{product.category}}</h6>
+          <h6 class="card-subtitle mt-2 mb-2">Вес: {{product.weight}}</h6>
+          <h6 class="card-subtitle mt-2 mb-2">Цена: {{product.price}}</h6>
+          <h6 class="card-subtitle mt-2 mb-2">Количество на складе: {{product.amount}}</h6>
+          <div class="d-flex justify-content-between">
+            <div>
+              <button class="btn btn-sm btn-success mr-2" style="width: 50px"
+                (click)="plusAmount(product.id)">+</button>
+              <button class="btn btn-sm btn-danger mr-2" style="width: 50px" (click)="subAmount(product.id)">-</button>
+            </div>
+            <button class="btn btn-sm btn-primary mr-2"
+              [routerLink]="['/productsEdit', product.id]">Редактировать</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

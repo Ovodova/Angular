@@ -1,0 +1,44 @@
+{
+  "products": [
+    {
+      "name": "IPhone",
+      "code": "23fdsr",
+      "price": 50000,
+      "owner": "Apple",
+      "category": "Телефоны",
+      "weight": 300,
+      "amount": 10,
+      "id": 5
+    },
+    {
+      "id": 6,
+      "name": "IPhone 7",
+      "code": "df3fds11",
+      "price": 400000,
+      "owner": "Apple",
+      "category": "Телефоны",
+      "weight": 230,
+      "amount": 145
+    },
+    {
+      "name": "Стол",
+      "code": "4еуп43",
+      "price": 1000,
+      "owner": null,
+      "category": "Мебель",
+      "weight": 700,
+      "amount": 4,
+      "id": 7
+    },
+    {
+      "name": "Видеокарта",
+      "code": "45gfer4",
+      "price": 30000,
+      "owner": "AMD",
+      "category": "Техника",
+      "weight": 300,
+      "amount": 10,
+      "id": 8
+    }
+  ]
+}
